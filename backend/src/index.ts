@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import { createTodo, deleteTodo, getTodos, TodoRequestBody, updateTodo } from './todos';
 
 const app = express();
 app.use(cors());
@@ -9,20 +10,26 @@ app.listen(3000, function() {
   console.log('listening on 3000');
 });
 
-app.post('/create', (req, res) => {
-  console.log(req.body);
-  res.json(req.body);
+app.get('/get', async (_, res) => {
+  res.json(await getTodos());
   res.end();
 });
 
-app.put('/update', (req, res) => {
-  console.log(req.body);
-  res.json(req.body);
+app.post<string, {}, string, TodoRequestBody>('/create', async (req, res) => {
+  await createTodo(req.body);
+  res.status(201);
+  res.send('Todo insert correctly!\n');
   res.end();
 });
 
-app.put('/delete', (req, res) => {
-  console.log(req.body);
-  res.json(req.body);
+app.put<string, {}, string, TodoRequestBody>('/update', async (req, res) => {
+  await updateTodo(req.body);
+  res.send('Todo updated correctly!\n');
+  res.end();
+});
+
+app.delete<string, {}, string, TodoRequestBody>('/delete', async (req, res) => {
+  await deleteTodo(req.body);
+  res.send('Todo delete correctly!\n');
   res.end();
 });
