@@ -8,6 +8,7 @@ services:
       POSTGRES_DB: api
     volumes:
       - ./pgdata:/var/lib/postgresql/data
+      - ./sql/create-table-todos.sql:/docker-entrypoint-initdb.d/create-table-todos.sql
     ports:
       - "5432:5432"
   

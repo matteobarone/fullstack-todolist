@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS todos (
+  id serial PRIMARY KEY,
+	value VARCHAR ( 50 ) NOT NULL,
+	isCompleted BOOLEAN NOT NULL
+);

@@ -11,7 +11,7 @@ export const pool = new Pool({
   port: 5432,
 });
 
-export const connectDb = async (retries = 3) => {
+export const connectDb = async (retries = 5) => {
   while (retries) {
     try {
       await pool.query('SELECT NOW()');
