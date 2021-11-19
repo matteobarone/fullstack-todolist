@@ -4,11 +4,19 @@ import { body } from 'express-validator';
 import { createTodo, deleteTodo, getTodos, updateTodo } from './controller';
 import { validateParams } from './middleware';
 import { ApplicationResponse, Todo, TodoRequestBody } from './interface';
+import { connectDb } from './db';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.listen(3000, () => console.log('listening on 3000'));
+
+console.log('ENVIRONMENT: ', process.env.NODE_ENV);
+
+connectDb()
+  .then((res) => {
+    console.log(res);
+    app.listen(3000, () => console.log('listening on port 3000 💻'));
+  });
 
 app.get<string, {}, Todo[], {}>(
   '/get',

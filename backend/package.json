@@ -4,8 +4,10 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "start": "tsc && node dist/index.js",
-    "dev": "nodemon -e ts  --exec \"npm start\"",
+    "compile": "tsc && node dist/index.js",
+    "start": "NODE_ENV=development nodemon -e ts  --exec \"npm run compile\"",
+    "prod": "NODE_ENV=production npm run compile",
+    "build": "docker build . -t matteo/fullstack-todolist-image",
     "tsc": "tsc"
   },
   "author": "Matteo Barone",

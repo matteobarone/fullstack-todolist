@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRESS_PASSWORD}
+      POSTGRES_USER: me
+      POSTGRES_DB: api
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  
+  web:
+    image: matteo/fullstack-todolist-image
+    depends_on:
+      - db
+    ports:
+        - "3000:3000"
