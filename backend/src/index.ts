@@ -7,7 +7,7 @@ import { ApplicationResponse, Todo, TodoRequestBody } from './interface';
 import { connectDb } from './db';
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:4200' }));
 app.use(express.json());
 
 console.log('ENVIRONMENT: ', process.env.NODE_ENV);
