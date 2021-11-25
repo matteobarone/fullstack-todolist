@@ -3,3 +3,4 @@ backend/dist
 backend/node_modules
 backend/.env
 backend/pgdata
+backend/package-lock.json
