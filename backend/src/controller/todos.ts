@@ -2,13 +2,8 @@ import { pool } from "../db";
 import { Todo } from "../interface";
 
 export const getTodos = async () => {
-  try {
-    const result = await pool.query<Todo>('SELECT * FROM todos ORDER BY id ASC');
-    return result.rows;
-  } catch (err) {
-    console.log('QUIIIII')
-    console.log(err);
-  }
+  const result = await pool.query<Todo>('SELECT * FROM todos ORDER BY id ASC');
+  return result.rows;
 };
 
 export const createTodo = async ({ value }: Partial<Todo>) => {
