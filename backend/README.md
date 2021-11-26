@@ -7,6 +7,7 @@
 
 ## Working locally
 
+- duplicate `.env.example` file, rename it in `.env` and set up the `POSTGRESS_PASSWORD`.
 - run a postgress instance in a different terminal
 - `npm install`
 - `npm start`: run the server in local on port 3000
